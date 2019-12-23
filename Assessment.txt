@@ -1,0 +1,22 @@
+Tanushri Raina
+
+Q1.a,c
+Q2.c
+Q3.d
+Q4.c
+Q5.d
+Q6.a
+Q7.b
+Q8.c
+Q9.d
+Q10.b
+Q11.a
+Q12.a,d
+Q13.c
+Q14.a
+Q15.a,b,c,d
+Q16.b
+Q17.a
+Q18.a,b,c
+Q19.d
+Q20.d
