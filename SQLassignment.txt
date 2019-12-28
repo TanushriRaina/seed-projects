@@ -1,0 +1,99 @@
+
+
+
+create table patient
+( patient_id number(3) ,
+patient_name varchar2(20) not null,
+patient_email varchar2(30) unique,
+patient_reg_date date
+);
+create table medicine
+(
+medicine_id number(3) ,
+medicine_name varchar2(30) not null
+);
+create table prescription
+( pres_id number(3) ,
+pres_date date,
+patient_id number(3)
+);
+create table pres_med
+( id number(3) ,
+pres_id number(3),
+medicine_id number(3)
+);
+drop table pres_med;
+
+alter table patient
+add constraint pk_patient_id primary key (patient_id);
+alter table medicine
+add constraint pk_medicine_id primary key (medicine_id);
+alter table prescription
+add constraint pk_pres_id primary key (pres_id);
+alter table pres_med
+add constraint pk_id primary key (id);
+
+alter table prescription
+add constraint fk_patient_id foreign key (patient_id) references patient(patient_id);
+alter table pres_med
+add constraint fk_pres_id foreign key (pres_id) references prescription(pres_id);
+alter table pres_med
+add constraint fk_medicine_id foreign key (medicine_id) references medicine(medicine_id);
+
+insert into patient
+values(1,'Atul','atul@gmail.com',sysdate);
+insert into patient
+values(2,'Sahil','sahil@gmail.com',sysdate);
+insert into patient
+values(3,'John','john@gmail.com',sysdate);
+
+insert into medicine
+values(1,'Digene');
+insert into medicine
+values(2,'Flagyl');
+insert into medicine
+values(3,'Paracetamol');
+insert into medicine
+values(4,'Lopramide');
+insert into medicine
+values(5,'Eno');
+
+insert into prescription
+values(1,sysdate,1);
+insert into prescription
+values(2,sysdate,2);
+insert into prescription
+values(3,sysdate,3);
+
+insert into pres_med
+values(1,1,3);
+insert into pres_med
+values(2,1,5);
+insert into pres_med
+values(3,2,2);
+insert into pres_med
+values(4,3,1);
+insert into pres_med
+values(5,3,4);
+
+desc patient;
+desc medicine;
+desc prescription;
+desc pres_med;
+
+select * from patient; 
+select * from medicine;
+select * from prescription;
+select * from pres_med;
+
+--Query 1----
+select * from patient
+where patient_reg_date between '27-DEC-19' and '29-DEC-19';
+
+
+--Query 2----
+select p.pres_id,m.medicine_id,m.medicine_name
+from prescription p join pres_med pm 
+on p.pres_id=pm.pres_id join medicine m 
+on pm.medicine_id=m.medicine_id
+where p.patient_id=3;
