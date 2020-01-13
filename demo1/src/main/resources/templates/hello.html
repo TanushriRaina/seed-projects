@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello page</title>
+</head>
+<body>
+<h1>Hello from spring boot. :)</h1>
+<h1 th:text="${var}">Heya...</h1>							
+<h1 th:inline="text">Heya [[${var}]]</h1>
+</body>
+</html>

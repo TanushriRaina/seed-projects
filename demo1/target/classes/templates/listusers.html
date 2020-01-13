@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List of users</title>
+</head>
+<body>
+
+	<form action="#" th:action="@{/listusers}" th:object="${u}" method="post">
+		<table>
+			<tr>
+				<td>ID</td>
+				<td><input type="number" name="id" th:value="${sid}"
+					readonly="readonly" /></td>
+			</tr>
+			<tr>
+			<td>Name</td>
+			<td><input type="text" name="name"/></td>
+			</tr>
+			<tr>
+			<td>Email</td>
+			<td><input type="text" name="email"/></td>
+			</tr>
+			<tr>
+			<td>Address</td>
+			<td><input type="text" name="address"/></td>
+			</tr>
+			<tr>
+			<td><input type="submit" name="Submit"/></td>
+			</tr>
+		</table>
+	</form>
+
+	<table border='2'>
+		<thead>
+			<tr>
+				<td scope="col">Id</td>
+				<td scope="col">Name</td>
+				<td scope="col">Email</td>
+				<td scope="col">Address</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="u:${listusers}">
+				<td th:text="${u.id}"></td>
+				<td th:text="${u.name}"></td>
+				<td th:text="${u.email}"></td>
+				<td th:text="${u.address}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>
